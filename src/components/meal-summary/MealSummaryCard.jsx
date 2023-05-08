@@ -19,7 +19,7 @@ export const MealSummaryCard = () => {
   );
 };
 const Container = styled.div`
-  width: 854px;
+  max-width: 854px;
   height: 270px;
   background: #383838;
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);

@@ -1,31 +1,11 @@
-import  ReactDOM  from "react-dom";
-import React, { useState } from "react";
 import styled from "styled-components";
 import { Busket } from "./Busket";
-import { Modal } from "../modal/Modal";
 
-
-
-
-export const Header = () => {
-  const [openModal, setOpenModal] = useState(false);
-  
-  const addModal = () => {
-    setOpenModal(true);
-    console.log("open");
-  };
+export const Header = ({ onToggle }) => {
   return (
     <Container>
-        <h1>ReactMeals</h1>
-        {
-          openModal && ReactDOM.createPortal(
-            <Modal
-            setOpenModal={setOpenModal}
-            />,
-            document.getElementById("modal")
-            )
-          }
-          <Busket onClick={addModal} >Your Cart</Busket>
+      <h1>ReactMeals</h1>
+      <Busket onToggle={onToggle}>Your Cart</Busket>
     </Container>
   );
 };

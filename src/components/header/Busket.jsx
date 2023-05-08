@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { ReactComponent as BasketIcon } from "../../assets/iccons/Vector.svg";
+import { cartContext } from "../../store/cart-context";
 
-export const Busket = ({ children,onClick }) => {
+export const Busket = ({ children, onToggle }) => {
+  const context = useContext(cartContext);
+
   return (
-    <Button  onClick={onClick}>
+    <Button onClick={onToggle}>
       <BasketIcon />
-      <BusketTitle >{children}</BusketTitle> <BusketCount>7</BusketCount>
+      <BusketTitle>{children}</BusketTitle>{" "}
+      <BusketCount>{context.totalAmount}</BusketCount>
     </Button>
   );
 };
@@ -24,6 +28,7 @@ const Button = styled.button`
   &:hover {
     background-color: #4d1601;
   }
+  
 `;
 const BusketTitle = styled.span`
   width: 78px;

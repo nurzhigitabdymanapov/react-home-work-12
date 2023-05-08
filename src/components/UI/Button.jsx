@@ -1,25 +1,57 @@
 import React from "react";
 import styled from "styled-components";
-
-export const Button = () => {
-  return <Buttons>+ Add</Buttons>;
+import { getBackgroundColor } from "../../utils/Helpers";
+import { getBorderRadius } from "../../utils/Helpers";
+import { getColor } from "../../utils/Helpers";
+import { getBorder } from "../../utils/Helpers";
+export const Button = ({
+  color = "container",
+  borderRadius = "rounder",
+  variant = "container",
+  icon,
+  onClick,
+  children,
+  ...props
+}) => {
+  return (
+    <MyButton
+      color={color}
+      borderRadius={borderRadius}
+      variant={variant}
+      onClick={onClick}
+      {...props}>
+      {icon}
+      {children}
+    </MyButton>
+  );
 };
-const Buttons = styled.div`
-  width: 99px;
-  height: 41px;
-  background: #8a2b06;
-  border-radius: 20px;
+const MyButton = styled.button`
+  background: ${getBackgroundColor};
+  border-radius: ${getBorderRadius};
+  color: ${getColor};
+  border: ${getBorder};
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 24px;
+  cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #fff;
-  &:hover {
-    background-color: #7e2a0a;
-    &:active {
-      background-color: #993108;
+  gap: 12px;
+  :hover {
+    background: #7e2a0a;
+    color: #fff;
+    svg {
+      fill: ${getColor};
     }
-    &:disabled {
-      background-color: #cac6c4;
-    }
+  }
+  :active {
+    background: #993108;
+  }
+  :disabled {
+    background: #cac6c4;
+    color: #fff;
+  }
+  svg {
+    fill: ${getColor};
   }
 `;
